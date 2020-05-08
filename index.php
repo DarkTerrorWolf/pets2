@@ -1,8 +1,10 @@
 <?php
-session_start();
+
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+
+session_start();
 
 require_once('vendor/autoload.php');
 
@@ -40,9 +42,10 @@ $f3->route('GET|POST /order', function ($f3) {
 //            $_SESSION['pet'] = $_POST['pet'];
 
             //Redirect to the summary route
-            $f3->reroute('summmary');
+            $f3->reroute('summary');
         }
     }
+   // $f3->set('pet', $pet);
     $view = new Template();
     echo $view->render("views/pet-order.html");
 }
