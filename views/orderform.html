@@ -9,20 +9,40 @@
 <form action="#" method="post" class="form-horizontal">
 
     <!-- get animal info -->
+<!--    <div class="form-group">-->
+<!--        <label for="animal" class="col-sm-2 control-label">What kind if pet would you like to order?</label>-->
+<!--        <label for="color" class="col-sm-2 control-label">Select a color </label>-->
+
+<!--        <div class="col-sm-4">-->
+<!--            <input class="form-control" type="text" name="animal" id="animal">-->
+<!--            <input class="form-control" type="text" name="color" id="color">-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div class="col-xs-3 ">-->
+<!--        <input class="form-control btn btn-default"-->
+<!--               type="submit" value="Place Order">-->
+<!--    </div>-->
+    <fieldset class="form-group">
     <div class="form-group">
-        <label for="animal" class="col-sm-2 control-label">Animal would you like? </label>
-        <label for="color" class="col-sm-2 control-label">What color would you like it? </label>
-
-        <div class="col-sm-4">
-            <input class="form-control" type="text" name="animal" id="animal">
-            <input class="form-control" type="text" name="color" id="color">
-        </div>
+    <label for="yourName">What kind if pet would you like to order?</label>
+    <input type="text" class="form-control"  id="yourName" name="yourName">
+<!--    <span class="err" id="errFname">Please enter your name</span>-->
     </div>
+    </fieldset>
+    <fieldset class="form-group">
+    <label for="met">How We Met</label>
+    <select class="form-control" id="met" name="met">
+        <option value="pink">Pink</option>
+        <option value="blue">Blue</option>
+        <option value="red">Red</option>
 
-    <div class="col-xs-3 ">
-        <input class="form-control btn btn-default"
-               type="submit" value="Place Order">
-    </div>
+    </select>
+    </fieldset>
+    <br>
+    <br>
+
+    <button type="submit" class="btn btn-primary">Place Order</button>
 </form>
 </body>
 </html>
