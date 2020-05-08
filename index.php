@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -8,18 +9,54 @@ require_once('vendor/autoload.php');
 //F3 class
 $f3 = Base::instance();
 
-//Route
-$f3->route('GET /', function () {
-    //echo "<h1>Hello World!</h1>";
+
+// Define a default route
+$f3->route('GET /', function(){
+    //echo '<h1> Pet Home</h1>';
     $view = new Template();
-    echo $view->render("views/home.html");
+    echo $view->render('views/pet-home.html');
 }
 );
-$f3->route('GET|POST /order', function () {
+$f3->route('GET|POST /order', function ($f3) {
     //echo "<h1>Hello World!</h1>";
+
+    // Check if teh form has been posted
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        // validate the data
+        if (empty($_POST['pet'])) {
+            //Validate the data
+            echo 'Please supply a pet type';
+
+        } else {
+//        echo "get method";
+            //Data is valid
+            $_SESSION['pet'] = $_POST['pet'];
+
+            //Added color to the session
+            $_SESSION['color'] = $_POST['color'];
+//            $_SESSION['pet'] = $_POST['pet'];
+//            $_SESSION['pet'] = $_POST['pet'];
+//            $_SESSION['pet'] = $_POST['pet'];
+
+            //Redirect to the summary route
+            $f3->reroute('summmary');
+        }
+    }
     $view = new Template();
-    echo $view->render("views/orderform.html");
+    echo $view->render("views/pet-order.html");
 }
 );
+$f3->route('GET /summary', function() {
+    //echo '<h1>Thank you for your order!</h1>';
+
+    $view = new Template();
+    echo $view->render('views/order-summary.html');
+
+    session_destroy();
+});
 
 $f3->run();
+
+
+
